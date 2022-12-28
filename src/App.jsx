@@ -46,18 +46,21 @@ const App = () => {
 
     const [filter, setFilter] = useState("all");
     const filteredTodos = () => {
-      switch(filter) {
-        case "all":
-          return todos
-        case "active":
-          return todos.filter((todo) => !todo.completed)
-        case "completed":
-          return todos.filter((todo) => todo.completed)
-      }
-    }
+        switch (filter) {
+            case "all":
+                return todos;
+            case "active":
+                return todos.filter((todo) => !todo.completed);
+            case "completed":
+                return todos.filter((todo) => todo.completed);
+        }
+    };
 
     return (
-        <div className="min-h-screen bg-gray-300 bg-[url(./assets/images/bg-mobile-light.jpg)] bg-contain bg-no-repeat">
+        <div
+            className="min-h-screen bg-gray-300 bg-[url(./assets/images/bg-mobile-light.jpg)]
+            bg-contain bg-no-repeat transition-all duration-1000 dark:bg-gray-900 dark:bg-[url(./assets/images/bg-mobile-dark.jpg)]"
+        >
             <Header />
             <main className="container mx-auto mt-8 px-4">
                 <TodoCreate createTodo={createTodo} />
@@ -70,10 +73,12 @@ const App = () => {
                     computedItemsLeft={computedItemsLeft}
                     clearCompleted={clearCompleted}
                 />
-                <TodoFilter setFilter={setFilter} filter={filter}/>
+                <TodoFilter setFilter={setFilter} filter={filter} />
             </main>
 
-            <footer>Drag and drop</footer>
+            <footer className="text-center dark:text-gray-400">
+                Drag and drop
+            </footer>
         </div>
     );
 };
